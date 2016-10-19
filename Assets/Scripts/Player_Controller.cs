@@ -2,23 +2,31 @@
  *Roll-A-Ball Tutorial from Unity3D.com 
  */
 
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class Player_Controller : MonoBehaviour {
 
 	private Rigidbody objectRigidbody;
-	public float push;
 	private int count;
-	public Text countText;
-	public Text winText;
+	private AudioSource source;
 
-	// Use this for initialization
+	public float push;	public Text countText;
+	public Text winText;
+	public AudioClip mariocoin;
+
+
+
 	void Start () {
+		source = GetComponent<AudioSource>();
 		objectRigidbody = GetComponent<Rigidbody>();
 		count = 0;
 		SetCounter();
+
+		//source.PlayOneShot(source, 1.0f);
 	}
 	
 	// Update is called once per frame
@@ -28,6 +36,12 @@ public class Player_Controller : MonoBehaviour {
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
+		//jump function using force
+		if (Input.GetKeyDown ("space")){
+
+			objectRigidbody.AddForce (0, 300, 0);
+		}
+
 		objectRigidbody.AddForce(movement*push);
 	}
 
@@ -36,6 +50,8 @@ public class Player_Controller : MonoBehaviour {
 			collObject.gameObject.SetActive(false);
 			count++;
 			SetCounter();
+			source.PlayOneShot(mariocoin, 1.0f);
+
 		}
 	}
 
@@ -45,6 +61,13 @@ public class Player_Controller : MonoBehaviour {
 			winText.text = "You've Won the Game!!!";
 		}
 	}
+
+//This section is an extra jump function but instead of "jump" it became "teleport up in space then fall"
+	//void Update () {
+	//	        if (Input.GetKeyDown ("space")){
+	//		                 transform.Translate(Vector3.up * 260 * Time.deltaTime, Space.World);
+	//	} 
+	//}
 
 
 }
