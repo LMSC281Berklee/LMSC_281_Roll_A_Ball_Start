@@ -29,6 +29,11 @@ public class Player_Controller : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		objectRigidbody.AddForce(movement*push);
+
+		//make player jump when space bar is pressed (Source: http://answers.unity3d.com/questions/190837/make-a-rigidbody-jump-global-up.html)
+		if (Input.GetButtonDown ("Jump")) {
+			GetComponent<Rigidbody>().AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+		}
 	}
 
 	void OnTriggerEnter (Collider collObject) {
