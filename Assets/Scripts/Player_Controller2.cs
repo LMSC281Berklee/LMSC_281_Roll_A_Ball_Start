@@ -1,17 +1,16 @@
 ﻿/*
  *Roll-A-Ball Tutorial from Unity3D.com 
  */
-//Antonio Espinosa Holguín (Antonio Espinosa branch)
+//Antonio Espinosa Holguín (AntonioEspinosa branch)
 //October 20th, 2016
-//This script has been altered so that it functions as the "level 1" script.
-//To that end the "you've won!" behaviour has been changed to a LoadScene function.
-
+//This script, essentially identical to the original Player_Controller one, is now "level 2."
+//The only real alteration has been a modification in the number of objects to collide with, so that level 2 is "harder" than level 1.
+//Also to this end, the variable for the "push" has been changed to 20 in the inspector, so the player is harder to control.
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class Player_Controller : MonoBehaviour {
+public class Player_Controller2 : MonoBehaviour {
 
 	private Rigidbody objectRigidbody;
 	public float push;
@@ -46,8 +45,8 @@ public class Player_Controller : MonoBehaviour {
 
 	void SetCounter() {
 		countText.text = "Count: " + count.ToString();
-		if (count >= 12) {
-			SceneManager.LoadScene ("Level2");
+		if (count >= 15) {
+			winText.text = "You've Won the Game!!!";
 		}
 	}
 
