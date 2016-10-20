@@ -35,7 +35,15 @@ public class Player_Controller : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		objectRigidbody.AddForce(movement*push);
-	}
+
+        //to jump
+        //based on code from http://answers.unity3d.com/questions/190837/make-a-rigidbody-jump-global-up.html
+        //and http://answers.unity3d.com/questions/30127/how-can-i-make-my-character-jump.html
+        if (Input.GetKeyDown("space"))
+        {
+            transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
+        }
+    }
 
 	void OnTriggerEnter (Collider collObject) {
 		if (collObject.gameObject.CompareTag("PickUp")) {
