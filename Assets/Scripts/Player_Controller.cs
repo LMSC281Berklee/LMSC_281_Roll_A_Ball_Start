@@ -1,4 +1,5 @@
-﻿/*
+﻿//Modified by Alexander J. Harder
+/*
  *Roll-A-Ball Tutorial from Unity3D.com 
  */
 //Antonio Espinosa Holguín (Antonio Espinosa branch)
