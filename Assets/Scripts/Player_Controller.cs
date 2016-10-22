@@ -18,12 +18,18 @@ public class Player_Controller : MonoBehaviour {
 	private int count;
 	public Text countText;
 	public Text winText;
+	//new private Rigidbody variable **spieldenner
+	private Rigidbody rb;
+	//public float value for jump height **spieldenner
+	public float jump;
 
 	// Use this for initialization
 	void Start () {
 		objectRigidbody = GetComponent<Rigidbody>();
 		count = 0;
 		SetCounter();
+		//define variable **spieldenner
+		rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +40,10 @@ public class Player_Controller : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		objectRigidbody.AddForce(movement*push);
+		//when the space bar is pressed, ball jumps **spieldenner
+		if (Input.GetKeyDown(KeyCode.Space)){
+			rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);
+		}
 	}
 
 	void OnTriggerEnter (Collider collObject) {

@@ -37,7 +37,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44692618, g: 0.49678808, b: 0.57508606, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44692612, g: 0.49678808, b: 0.57508606, a: 1}
+>>>>>>> spieldenner_aaron
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -535,6 +539,7 @@ MonoBehaviour:
   push: 10
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
+  jump: 5
 --- !u!54 &308881593
 Rigidbody:
   m_ObjectHideFlags: 0
