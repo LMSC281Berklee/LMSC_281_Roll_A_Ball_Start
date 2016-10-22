@@ -40,16 +40,11 @@ public class Player_Controller : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		objectRigidbody.AddForce(movement*push);
-<<<<<<< HEAD
 
-		//make player jump when space bar is pressed (Source: http://answers.unity3d.com/questions/190837/make-a-rigidbody-jump-global-up.html)
-		if (Input.GetButtonDown ("Jump")) {
-			GetComponent<Rigidbody>().AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
-=======
 		//when the space bar is pressed, ball jumps **spieldenner
 		if (Input.GetKeyDown(KeyCode.Space)){
 			rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);
->>>>>>> master
+
 		}
 	}
 
@@ -63,13 +58,9 @@ public class Player_Controller : MonoBehaviour {
 
 	void SetCounter() {
 		countText.text = "Count: " + count.ToString();
-<<<<<<< HEAD
-		if (count >= 9) {
-			winText.text = "You've Won the Game!!!";
-=======
+
 		if (count >= 12) {
 			SceneManager.LoadScene ("Level2");
->>>>>>> master
 		}
 	}
 
