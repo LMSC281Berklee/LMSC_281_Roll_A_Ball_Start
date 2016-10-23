@@ -27,7 +27,9 @@ public class Player_Controller : MonoBehaviour {
 	//SRamos audio functionality
 	private AudioSource source;
 
+	//making push public allows each scene to set a different amount
 	public float push;	
+
 	public Text countText;
 	public Text winText;
 	public AudioClip mariocoin;
@@ -79,17 +81,39 @@ public class Player_Controller : MonoBehaviour {
 		
 	void NextLevel () {
 
-		if (Application.loadedLevelName == "Mini_Game") {
-			SceneManager.LoadScene ("Level1"); 
-		}
-		else if (Application.loadedLevelName == "Level1") {
+//		if (SceneManager.GetActiveScene().name == "Mini_Game") {
+//			SceneManager.LoadScene ("Level1"); 
+//		}
+//		else if (SceneManager.GetActiveScene().name == "Level1") {
+//			SceneManager.LoadScene ("Level2"); 
+//		}
+//		else if (SceneManager.GetActiveScene().name == "Level2") {
+//			SceneManager.LoadScene ("Level3"); 
+//		}
+//		else if (SceneManager.GetActiveScene().name == "Level3") {
+//			SceneManager.LoadScene ("Mini_Game_Destructor"); 
+//		}
+	
+
+	//Given that we have quite a few if-then-else statements we should convert the above code into a case/switch statement
+
+		switch (SceneManager.GetActiveScene().name)
+		{
+		case ("Mini_Game"):
+			SceneManager.LoadScene ("Level1");
+			break;
+		case ("Level1"):
 			SceneManager.LoadScene ("Level2"); 
-		}
-		else if (Application.loadedLevelName == "Level2") {
-			SceneManager.LoadScene ("Level3"); 
-		}
-		else if (Application.loadedLevelName == "Level3") {
-			SceneManager.LoadScene ("Mini_Game_Destructor"); 
+			break;
+		case ("Level2"):
+			SceneManager.LoadScene ("Level3");
+			break;
+		case ("Level3"):
+			SceneManager.LoadScene ("Mini_Game_Destructor");
+			break;
+		default:
+			SceneManager.LoadScene ("Mini_Game");
+			break;
 		}
 	}
 }
