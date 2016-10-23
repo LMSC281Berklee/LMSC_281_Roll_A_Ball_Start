@@ -534,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   push: 10
+  countToWin: 9
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
 --- !u!54 &308881593

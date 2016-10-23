@@ -1,5 +1,12 @@
-﻿using UnityEngine;
+﻿//LMSC-281 Fall 2016
+//Roll-a-Ball modified project
+//from merge with Jessie Cox
+
+using UnityEngine;
 using System.Collections;
+
+//to change the loadlevel deprecated command to the new scene load function
+using UnityEngine.SceneManagement;
 
 
 
@@ -29,8 +36,10 @@ public class CollisionN : MonoBehaviour {
 
 	void Reset()
 	{
-		
-		Application.LoadLevel(Application.loadedLevel);
+		SceneManager.LoadScene ("Mini_Game_Destructor"); 
+
+		//the application loadlevel function is deprecated and should be replaced
+//		Application.LoadLevel(Application.loadedLevel);
 	}
 
 }
