@@ -1,15 +1,10 @@
 ﻿/*
  *Roll-A-Ball Tutorial from Unity3D.com 
  */
-//Antonio Espinosa Holguín (Antonio Espinosa branch)
-//October 20th, 2016
-//This script has been altered so that it functions as the "level 1" script.
-//To that end the "you've won!" behaviour has been changed to a LoadScene function.
 
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour {
 
@@ -18,18 +13,12 @@ public class Player_Controller : MonoBehaviour {
 	private int count;
 	public Text countText;
 	public Text winText;
-	//new private Rigidbody variable **spieldenner
-	private Rigidbody rb;
-	//public float value for jump height **spieldenner
-	public float jump;
 
 	// Use this for initialization
 	void Start () {
 		objectRigidbody = GetComponent<Rigidbody>();
 		count = 0;
 		SetCounter();
-		//define variable **spieldenner
-		rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -40,12 +29,6 @@ public class Player_Controller : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		objectRigidbody.AddForce(movement*push);
-
-		//when the space bar is pressed, ball jumps **spieldenner
-		if (Input.GetKeyDown(KeyCode.Space)){
-			rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);
-
-		}
 	}
 
 	void OnTriggerEnter (Collider collObject) {
@@ -58,9 +41,8 @@ public class Player_Controller : MonoBehaviour {
 
 	void SetCounter() {
 		countText.text = "Count: " + count.ToString();
-
-		if (count >= 12) {
-			SceneManager.LoadScene ("Level2");
+		if (count >= 9) {
+			winText.text = "You've Won the Game!!!";
 		}
 	}
 
