@@ -37,11 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44692647, g: 0.49678838, b: 0.5750862, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.44692618, g: 0.49678808, b: 0.57508606, a: 1}
->>>>>>> maze-level
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -592,18 +588,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 308881591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 91336e0e7c0364d75aa875e9512eefee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   push: 20
   countToWin: 15
-=======
-  m_Script: {fileID: 11500000, guid: a4481d03040ac47afa678df3cfb1566a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  push: 20
->>>>>>> maze-level
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
 --- !u!54 &308881593
