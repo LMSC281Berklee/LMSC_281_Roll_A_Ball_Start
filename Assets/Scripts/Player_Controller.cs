@@ -14,7 +14,8 @@ public class Player_Controller : MonoBehaviour {
 	private int count;
 	private AudioSource source;
 
-	public float push;	public Text countText;
+	public float push;	
+	public Text countText;
 	public Text winText;
 	public AudioClip mariocoin;
 
