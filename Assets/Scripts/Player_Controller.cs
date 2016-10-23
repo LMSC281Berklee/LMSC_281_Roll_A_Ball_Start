@@ -16,23 +16,28 @@ using UnityEngine.UI;
 //to include the new scene load function
 using UnityEngine.SceneManagement;
 
-
 public class Player_Controller : MonoBehaviour {
 
 	private Rigidbody objectRigidbody;
-	public float push;
 	private int count;
 
 	//JC The following allows for individual levels to set varying numbers of pickups needed to win
 	public int countToWin = 12;
+
+	//SRamos audio functionality
+	private AudioSource source;
+
+	public float push;	
 	public Text countText;
 	public Text winText;
+	public AudioClip mariocoin;
 
 	//from JCox
 	private float levelDelay = 3.0f;
 
 	// Use this for initialization
 	void Start () {
+		source = GetComponent<AudioSource>();
 		objectRigidbody = GetComponent<Rigidbody>();
 		count = 0;
 		SetCounter();
@@ -45,6 +50,12 @@ public class Player_Controller : MonoBehaviour {
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
+		//jump function using force
+		if (Input.GetKeyDown ("space")){
+
+			objectRigidbody.AddForce (0, 300, 0);
+		}
+
 		objectRigidbody.AddForce(movement*push);
 	}
 
@@ -53,6 +64,8 @@ public class Player_Controller : MonoBehaviour {
 			collObject.gameObject.SetActive(false);
 			count++;
 			SetCounter();
+			source.PlayOneShot(mariocoin, 1.0f);
+
 		}
 	}
 
@@ -63,10 +76,13 @@ public class Player_Controller : MonoBehaviour {
 			Invoke ("NextLevel", levelDelay);
 		}
 	}
-
+		
 	void NextLevel () {
 
 		if (Application.loadedLevelName == "Mini_Game") {
+			SceneManager.LoadScene ("Level1"); 
+		}
+		else if (Application.loadedLevelName == "Level1") {
 			SceneManager.LoadScene ("Level2"); 
 		}
 		else if (Application.loadedLevelName == "Level2") {
@@ -77,3 +93,11 @@ public class Player_Controller : MonoBehaviour {
 		}
 	}
 }
+
+//This section is an extra jump function but instead of "jump" it became "teleport up in space then fall"
+	//void Update () {
+	//	        if (Input.GetKeyDown ("space")){
+	//		                 transform.Translate(Vector3.up * 260 * Time.deltaTime, Space.World);
+	//	} 
+	//}
+

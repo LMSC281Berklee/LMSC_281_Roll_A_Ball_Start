@@ -690,9 +690,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91336e0e7c0364d75aa875e9512eefee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countToWin: 12
   push: 50
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
+  mariocoin: {fileID: 8300000, guid: 42ca83f68bcb846d8ab4d8a0b9c04137, type: 3}
 --- !u!54 &308881593
 Rigidbody:
   m_ObjectHideFlags: 0
