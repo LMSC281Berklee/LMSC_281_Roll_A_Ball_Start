@@ -1,4 +1,5 @@
-﻿/*
+﻿//Modified by Alexander J. Harder
+/*
  *Roll-A-Ball Tutorial from Unity3D.com 
  *from LMSC-281 Roll-a-Ball modified project
  */
@@ -59,7 +60,15 @@ public class Player_Controller : MonoBehaviour {
 		}
 
 		objectRigidbody.AddForce(movement*push);
-	}
+
+        //to jump
+        //based on code from http://answers.unity3d.com/questions/190837/make-a-rigidbody-jump-global-up.html
+        //and http://answers.unity3d.com/questions/30127/how-can-i-make-my-character-jump.html
+        if (Input.GetKeyDown("space"))
+        {
+            transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
+        }
+    }
 
 	void OnTriggerEnter (Collider collObject) {
 		if (collObject.gameObject.CompareTag("PickUp")) {
