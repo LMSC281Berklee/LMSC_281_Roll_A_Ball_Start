@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692612, g: 0.49678814, b: 0.5750861, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692647, g: 0.49678838, b: 0.5750862, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   push: 12
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
-  mariocoin: {fileID: 8300000, guid: 42ca83f68bcb846d8ab4d8a0b9c04137, type: 3}
+  mariocoin: {fileID: 8300000, guid: bed809e3434bc4e09a72d13e56bd1605, type: 3}
 --- !u!54 &308881593
 Rigidbody:
   m_ObjectHideFlags: 0

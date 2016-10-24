@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 91336e0e7c0364d75aa875e9512eefee
-timeCreated: 1476671935
+timeCreated: 1477276735
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - countText: {instanceID: 0}
+  - winText: {instanceID: 0}
+  - mariocoin: {fileID: 8300000, guid: bed809e3434bc4e09a72d13e56bd1605, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
