@@ -9,7 +9,6 @@
 //This script has been altered so that it functions as the "level 1" script.
 //To that end the "you've won!" behaviour has been changed to a LoadScene function.
 
-
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -133,4 +132,3 @@ public class Player_Controller : MonoBehaviour {
 	//		                 transform.Translate(Vector3.up * 260 * Time.deltaTime, Space.World);
 	//	} 
 	//}
-
