@@ -52,9 +52,9 @@ public class PlayerController_w_LeaderBoard : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision other) {
-		
-		if (other.gameObject.tag == "Wall") {
-			Debug.Log ("Hit the wall");
+		//JC check to see if there is an audiosource on the object we collided with
+		//and if so, play that sound
+		if (other.gameObject.GetComponent<AudioSource>() != null) {
 			other.gameObject.GetComponent<AudioSource>().Play();
 		}
 	}
