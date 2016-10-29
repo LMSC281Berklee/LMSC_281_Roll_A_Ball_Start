@@ -34,6 +34,9 @@ public class Player_Controller : MonoBehaviour {
 	public Text winText;
 	public AudioClip mariocoin;
 
+	//float for the timer bCor
+	float timeRemaining = 30;
+
 	//from JCox
 	private float levelDelay = 3.0f;
 
@@ -43,6 +46,7 @@ public class Player_Controller : MonoBehaviour {
 		objectRigidbody = GetComponent<Rigidbody>();
 		count = 0;
 		SetCounter();
+
 	}
 	
 	// Update is called once per frame
@@ -51,6 +55,8 @@ public class Player_Controller : MonoBehaviour {
 		float moveVertical = Input.GetAxis("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		//creates countdown bCor
+		timeRemaining -= Time.deltaTime;
 
 		//jump function using force
 		if (Input.GetKeyDown ("space")){
@@ -84,6 +90,8 @@ public class Player_Controller : MonoBehaviour {
 		if (count >= countToWin) {
 			winText.text = "You've Won the Game!!!";
 			Invoke ("NextLevel", levelDelay);
+			//stops countdown bCor
+			timeRemaining = 30;
 		}
 	}
 		
@@ -124,7 +132,38 @@ public class Player_Controller : MonoBehaviour {
 			break;
 		}
 	}
+	//creates timer on screen bCor and restart button with the switch statement
+
+	void OnGUI(){
+		if (timeRemaining > 0) {
+			GUI.Label (new Rect (450, 10, 200, 300), "Time Remaining : " + (int)timeRemaining);
+
+
+		} else {
+			if (GUI.Button (new Rect (100, 10, 150, 100), "Restart Level"))
+				switch (SceneManager.GetActiveScene ().name) {
+				case ("Mini_Game"):
+					SceneManager.LoadScene ("Mini_Game");
+					break;
+				case ("Level1"):
+					SceneManager.LoadScene ("Level1"); 
+					break;
+				case ("Level2"):
+					SceneManager.LoadScene ("Level2");
+					break;
+				case ("Level3"):
+					SceneManager.LoadScene ("Level3");
+					break;
+				default:
+					SceneManager.LoadScene ("Mini_Game");
+					break;
+				}
+			}
+
+	}
+		
 }
+
 
 //This section is an extra jump function but instead of "jump" it became "teleport up in space then fall"
 	//void Update () {
