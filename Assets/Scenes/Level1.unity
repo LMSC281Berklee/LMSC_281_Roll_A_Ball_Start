@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692647, g: 0.49678838, b: 0.5750862, a: 1}
+  m_IndirectSpecularColor: {r: 0.4469267, g: 0.49678862, b: 0.57508683, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -538,6 +538,10 @@ MonoBehaviour:
   countText: {fileID: 1501551442}
   winText: {fileID: 284678742}
   mariocoin: {fileID: 8300000, guid: bed809e3434bc4e09a72d13e56bd1605, type: 3}
+  maxVelocity: 7
+  jumpCounter: 0
+  maxNumberOfJumps: 2
+  inAirPushFactor: 0.5
 --- !u!54 &308881593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1788,7 +1792,7 @@ GameObject:
   - 23: {fileID: 1446514165}
   m_Layer: 0
   m_Name: FACE
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

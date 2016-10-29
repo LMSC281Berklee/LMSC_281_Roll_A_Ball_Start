@@ -37,6 +37,12 @@ public class Player_Controller : MonoBehaviour {
 	//from JCox
 	private float levelDelay = 3.0f;
 
+	//Wjensen
+	public float maxVelocity = 7;
+	public int jumpCounter = 0;
+	public int maxNumberOfJumps = 2;
+	public float inAirPushFactor = 0.5f;
+
 	// Use this for initialization
 	void Start () {
 		source = GetComponent<AudioSource>();
@@ -47,27 +53,70 @@ public class Player_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		Debug.Log("velocity: " + objectRigidbody.velocity.magnitude);
+
 		float moveHorizontal = Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		//jump function using force
-		if (Input.GetKeyDown ("space")){
-
+		if (Input.GetKeyDown ("space") && jumpCounter < maxNumberOfJumps){
+			//applies jump force
 			objectRigidbody.AddForce (0, 300, 0);
+			//increments jumpCounter with each jump
+			jumpCounter++;
 		}
 
-		objectRigidbody.AddForce(movement*push);
+		//moves player
+		if (jumpCounter == 0) // if player is grounded
+		{
+			//moves player
+			objectRigidbody.AddForce(movement * push);
+		}
+		else // if player is not grounded
+		{
+			//moves player with half force
+			objectRigidbody.AddForce(movement * push * inAirPushFactor);
+		}
+
+		//limits velocity
+		LimitVelocity(objectRigidbody, maxVelocity);
+
 
         //to jump
         //based on code from http://answers.unity3d.com/questions/190837/make-a-rigidbody-jump-global-up.html
         //and http://answers.unity3d.com/questions/30127/how-can-i-make-my-character-jump.html
-        if (Input.GetKeyDown("space"))
-        {
-            transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
-        }
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
+        //}
     }
+
+	//WJensen
+	//Limits objRigid's velocity to velLimit
+	void LimitVelocity(Rigidbody objRigid, float velLimit)
+	{
+		//limits object velocity maxVelocity
+		//if velocity is greater than maxVelocity
+		if (objRigid.velocity.magnitude > velLimit)
+		{
+			//sets object velocity mag to maxVelocity
+			objRigid.velocity = objRigid.velocity.normalized * velLimit;
+		}
+	}
+
+	//WJensen
+	//run on Collision
+	void OnCollisionEnter(Collision col)
+	{
+		//if object hits obj with name/tag "Ground"
+		if (col.gameObject.name == "Ground" || col.gameObject.tag == "Ground")
+		{
+			//resets jumpCounter to 0
+			jumpCounter = 0;
+		}
+	}
 
 	void OnTriggerEnter (Collider collObject) {
 		if (collObject.gameObject.CompareTag("PickUp")) {
