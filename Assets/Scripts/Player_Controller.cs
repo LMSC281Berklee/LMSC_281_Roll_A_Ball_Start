@@ -137,37 +137,9 @@ public class Player_Controller : MonoBehaviour {
 	void OnGUI(){
 		if (timeRemaining > 0) {
 			GUI.Label (new Rect (450, 10, 200, 300), "Time Remaining : " + (int)timeRemaining);
-
-
-		} else {
-			if (GUI.Button (new Rect (100, 10, 150, 100), "Restart Level"))
-				switch (SceneManager.GetActiveScene ().name) {
-				case ("Mini_Game"):
-					SceneManager.LoadScene ("Mini_Game");
-					break;
-				case ("Level1"):
-					SceneManager.LoadScene ("Level1"); 
-					break;
-				case ("Level2"):
-					SceneManager.LoadScene ("Level2");
-					break;
-				case ("Level3"):
-					SceneManager.LoadScene ("Level3");
-					break;
-				default:
-					SceneManager.LoadScene ("Mini_Game");
-					break;
-				}
-			}
-
+		} 
+		else if (GUI.Button (new Rect (100, 10, 150, 100), "Restart Level")) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
 	}
-		
 }
-
-
-//This section is an extra jump function but instead of "jump" it became "teleport up in space then fall"
-	//void Update () {
-	//	        if (Input.GetKeyDown ("space")){
-	//		                 transform.Translate(Vector3.up * 260 * Time.deltaTime, Space.World);
-	//	} 
-	//}
